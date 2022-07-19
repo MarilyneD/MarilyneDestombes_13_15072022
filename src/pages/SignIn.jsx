@@ -1,7 +1,42 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const SignIn = () => {
+
+//login
+
+useEffect (() => {
+  (async () => {
+
+    const headersold = {
+      'Content-Type': 'application/json',
+      "email":"steve@rogers.com",
+      "password": "password456"
+    }
+   
+    const headers = {
+      email:"steve@rogers.com",
+      password: "password456"
+    }
+
+    
+    
+   await axios.post('http://localhost:3001/api/v1/user/login', {
+    email:"steve@rogers.com",
+      password: "password456"
+  }).then(response => console.log('response',response))
+    .catch(error => {        
+        console.error('There was an error!', error);
+    });;
+    
+  })();
+}, []);
+
+
+
+
+
     return (
         <main className="main bg-dark">
       <section className="sign-in-content">
