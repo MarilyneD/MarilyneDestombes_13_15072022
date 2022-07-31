@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const User = () => {
+const Profile = () => {
     return (
-        <main className="main bg-dark  user-page">
+        <main className="main bg-dark  profile-page">
       <div className="header">
         <h1>Welcome back<br />Tony Jarvis!</h1>
         <button className="edit-button">Edit Name</button>
@@ -43,4 +43,4 @@ const User = () => {
     );
 };
 
-export default User;
+export default Profile;
