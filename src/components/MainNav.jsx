@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import SignInNav from "./SignInNav";
 import SignOutNav from "./SignOutNav";
+import SignUpNav from "./SignUpNav";
 import UserNav from "./UserNav";
 
 const MainNav = () => {
@@ -25,7 +26,9 @@ const MainNav = () => {
             <UserNav /> <SignOutNav />
           </div>
         ) : (
-          <SignInNav />
+          <div>
+          <SignInNav /> <SignUpNav/>
+          </div>
         )}
       </div>
     </nav>
