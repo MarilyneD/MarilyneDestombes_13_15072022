@@ -1,4 +1,4 @@
-# Project 13 ![ArgentBank](/public/img/argentBankLogo.png)
+# ![ArgentBank](/public/img/argentbankp13.png)
 
 ![N|Solid](https://badgen.net/badge/React/18.2.0/blue?icon=react) ![N|Solid](https://badgen.net/badge/npm/8.11.0/red?icon=react) ![N|Solid](https://badgen.net/badge/Sass/1.53.0/pink?icon=react) ![N|Solid](https://badgen.net/badge/Redux/1.8.3/green?icon=react) ![N|Solid](https://badgen.net/badge/Axios/0.27.2/purple?icon=react)
 
