@@ -1,6 +1,6 @@
-# [ArgentBank Project](/public/img/argentBankLogo.png)
+# Project 13 ![ArgentBank](/public/img/argentBankLogo.png)
 
-![N|Solid](https://badgen.net/badge/React/18.2.0/blue?icon=react) ![N|Solid](https://badgen.net/badge/npm/8.11.0/red?icon=react) ![N|Solid](https://badgen.net/badge/Sass/1.53.0/pink?icon=react) ![N|Solid](https://badgen.net/badge/Redux toolkit/1.8.3/green?icon=react) ![N|Solid](https://badgen.net/badge/Axios/0.27.2/purple?icon=react)
+![N|Solid](https://badgen.net/badge/React/18.2.0/blue?icon=react) ![N|Solid](https://badgen.net/badge/npm/8.11.0/red?icon=react) ![N|Solid](https://badgen.net/badge/Sass/1.53.0/pink?icon=react) ![N|Solid](https://badgen.net/badge/Redux/1.8.3/green?icon=react) ![N|Solid](https://badgen.net/badge/Axios/0.27.2/purple?icon=react)
 
 Project objective : Creation of a web application allowing customers to connect and manage their accounts and profile.
 
@@ -46,7 +46,7 @@ Argent Bank uses the following tech stack:
 
 **Back-End installation**
 
-1. Fork the repository available at this adress :
+1. Fork the repository available at this address :
    https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API
 
 2. Follow the instructions of the readme.md file.
