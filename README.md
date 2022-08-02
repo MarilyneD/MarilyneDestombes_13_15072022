@@ -2,12 +2,11 @@
 
 ![N|Solid](https://badgen.net/badge/React/18.2.0/blue?icon=react) ![N|Solid](https://badgen.net/badge/npm/8.11.0/red?icon=react) ![N|Solid](https://badgen.net/badge/Sass/1.53.0/pink?icon=react) ![N|Solid](https://badgen.net/badge/Redux/1.8.3/green?icon=react) ![N|Solid](https://badgen.net/badge/Axios/0.27.2/purple?icon=react)
 
-Project objective : Creation of a web application allowing customers to connect and manage their accounts and profile.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project objective : Creation of a web application allowing customers to connect and manage their accounts and profile.
 
 ## Project Prerequisites :
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Argent Bank uses the following tech stack:
 
 - [NodeJS](https://nodejs.org/en/)
