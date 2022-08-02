@@ -1,12 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {
+
+  const globalStoreSign = useSelector(state => state.sign);
+  let navigate = useNavigate();
+
+  if(!globalStoreSign.responseProfile){navigate("/"); console.log("bizarre")}else{console.log("sinon")}
+
+
+
     return (
         <main className="main bg-dark  profile-page">
       <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
-        <button className="edit-button">Edit Name</button>
+        <h1>Welcome back<br />
+        {globalStoreSign.responseProfile && globalStoreSign.responseProfile.body.firstName} {' '}
+         {globalStoreSign.responseProfile && globalStoreSign.responseProfile.body.lastName} !</h1> 
+        <NavLink className="edit-button" to="/editname">Edit Name</NavLink>
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">

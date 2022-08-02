@@ -1,12 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { resetAll } from '../feature/signSlice';
 
 const SignOutNav = () => {
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleSignOut = () => { dispatch(resetAll());navigate("/") };
+
     return (
-        <NavLink className="main-nav-item" to="/">
+        <button className="main-nav-item main-nav-button" onClick={ e => handleSignOut()}>
           <i className="fa fa-sign-out"></i>
           Sign Out
-        </NavLink>
+        </button>
     );
 };
 

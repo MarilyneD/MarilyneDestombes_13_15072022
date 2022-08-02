@@ -1,24 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { addProfile, addSignInResponse, } from '../feature/signSlice';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { addProfileResponse, addSignInResponse, } from '../feature/signSlice';
 
 const SignIn = () => {
 
-//Redux import ne fonctionne pas
-const globalStoreSign = useSelector(state => state.sign)
-const dispatch = useDispatch()
+let navigate = useNavigate();  
+
+// Variables globales : Redux, utiles dans tout le site (si logué, le nom et le token)
+const dispatch = useDispatch()  // Pour sauvegarder des données dans le store
+const globalStoreSign = useSelector(state => state.sign) // rappeler les données du store "sign"
 
 
+// Variables locales : Hooks locaux, seulement utiles dans ce composant SignIn
 const signInEmail = useRef();   // pour enregistrer le premier input email (local non redux)
 const signInPassword = useRef(); // pour enregistrer le deuxième input pwd (local)
-const [axiosResponse, setAxiosResponse] = useState({});
-const [error, setError] = useState(false);
-const [axiosResponseProfile, setAxiosResponseProfile] = useState({});
+const [error, setError] = useState(false); // set comme "save"
 
 
-
+// fonction post(j'envoie) du login, pour récupérer le token dans la réponse
 const axiosSignIn = async () => {
   axios
     .post("http://localhost:3001/api/v1/user/login", {
@@ -26,8 +27,7 @@ const axiosSignIn = async () => {
       password: signInPassword.current.value,
     })
     .then((res) => {
-      dispatch(addSignInResponse(res.data)); // dans le store global
-      setAxiosResponse(res); // stocké localement
+      dispatch(addSignInResponse(res.data)); // met la réponse dans le store global
     })
     .catch((error) => {
       console.error("There was an error!", error);
@@ -37,15 +37,13 @@ const axiosSignIn = async () => {
 
 
 
-
+// fonction post du token dans le header, pour récupérer le profile
   const axiosProfile = async () => {
-    axios.defaults.headers.common['Authorization'] = 'Bearer' + axiosResponse.data.body.token;
+    axios.defaults.headers.common['Authorization'] = 'Bearer' + globalStoreSign.responseLogin.body.token;
     axios
       .post("http://localhost:3001/api/v1/user/profile")
       .then((res) => {
-        dispatch(addProfile(res.data));
-        setAxiosResponseProfile(res);
-        console.log("response Profile", axiosResponseProfile);
+        dispatch(addProfileResponse(res.data));
       })
       .catch((errorProfile) => {
         console.error("There was an error Profile!", errorProfile);
@@ -54,21 +52,22 @@ const axiosSignIn = async () => {
 
 
 
+// fonction qui se déclenche au click sur le formulaire
 const handleSignIn = async (e) => {
   e.preventDefault();
-  console.log(signInEmail.current.value, signInPassword.current.value);
-  axiosSignIn();
+  axiosSignIn(); // j'envoie les identifiants au backend et j'enregistre la réponse ds le store
+};
 
-  if (Object.keys(axiosResponse).length>1) {  // je dois avoir eu une réponse pour continuer
-  await axiosProfile();  // je post avec le token et je reçois le profil
+useEffect(() => {
+  if (globalStoreSign.responseLogin) {
+    console.log("Response arrivée dans le store");
+    axiosProfile();
+    navigate("/profile");
   }
-    else {}
+}, [globalStoreSign.responseLogin]); //useEffect ne se lance que si globalstoresign.response change
+  
 
-    
-     };
-
-
-
+ 
     return (
         <main className="main bg-dark">
       <section className="sign-in-content">
@@ -79,19 +78,18 @@ const handleSignIn = async (e) => {
         <form onSubmit={e => handleSignIn(e)}>
           <div className="input-wrapper">
             <label htmlFor='useremail'>User email</label
-            ><input type="email" id="useremail" required ref={signInEmail}/>
+            ><input type="email" id="useremail" required ref={signInEmail}/>  
           </div>
           <div className="input-wrapper">
             <label htmlFor='password'>Password</label
-            ><input type="password" id="password" required ref={signInPassword}/>
+            ><input type="password" id="password" required ref={signInPassword}/> {/*useRef local */}
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor='remember-me'>Remember me</label>
           </div>
 
-        <NavLink className="sign-in-button" to="/profile" > Sign In NavLink   </NavLink>
-        <input className="sign-in-button"type="submit" value="Sign In Input"/>
+        <input className="sign-in-button"type="submit" value="Sign In"/>
         <span className='sign-in-error'>{error && "le mail ou le mot de passe ne correspondent pas"}</span>
 
         </form>

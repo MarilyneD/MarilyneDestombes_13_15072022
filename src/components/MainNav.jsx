@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import SignInNav from "./SignInNav";
 import SignOutNav from "./SignOutNav";
 import UserNav from "./UserNav";
 
 const MainNav = () => {
-  const [isConnected, setIsConnected] = useState(true);
-
+  const globalStoreSign = useSelector(state => state.sign) // rappeler les données du store "sign"
+ 
   return (
     <nav className="main-nav">
       <NavLink className="main-nav-logo" to="/">
@@ -19,7 +20,7 @@ const MainNav = () => {
       </NavLink>
 
       <div>
-        {isConnected ? (
+        {globalStoreSign.responseProfile ? (
           <div>
             <UserNav /> <SignOutNav />
           </div>
