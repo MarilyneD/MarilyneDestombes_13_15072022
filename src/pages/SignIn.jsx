@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addProfileResponse, addSignInResponse, } from '../feature/signSlice';
 
 const SignIn = () => {
 
 let navigate = useNavigate();  
 
-// Variables globales : Redux, utiles dans tout le site (si logué, le nom et le token)
+// Variables locales globales : Store Redux, utiles dans tout le site (si logué, le nom et le token)
 const dispatch = useDispatch()  // Pour sauvegarder des données dans le store
 const globalStoreSign = useSelector(state => state.sign) // rappeler les données du store "sign"
 
@@ -52,7 +52,7 @@ const axiosSignIn = async () => {
 
 
 
-// fonction qui se déclenche au click sur le formulaire
+// fonction qui se déclenche au clic sur le formulaire
 const handleSignIn = async (e) => {
   e.preventDefault();
   axiosSignIn(); // j'envoie les identifiants au backend et j'enregistre la réponse ds le store
@@ -60,11 +60,11 @@ const handleSignIn = async (e) => {
 
 useEffect(() => {
   if (globalStoreSign.responseLogin) {
-    console.log("Response arrivée dans le store");
+    console.log("Response login arrivée dans le store Redux avec son token");
     axiosProfile();
     navigate("/profile");
   }
-}, [globalStoreSign.responseLogin]); //useEffect ne se lance que si globalstoresign.response change
+}, [globalStoreSign.responseLogin]); //useEffect ne se lance que si globalstoresign.responseLogin change
   
 
  
@@ -82,7 +82,7 @@ useEffect(() => {
           </div>
           <div className="input-wrapper">
             <label htmlFor='password'>Password</label
-            ><input type="password" id="password" required ref={signInPassword}/> {/*useRef local */}
+            ><input type="password" id="password" required ref={signInPassword}/>
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />

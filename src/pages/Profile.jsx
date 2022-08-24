@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -6,11 +6,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const Profile = () => {
 
   const globalStoreSign = useSelector(state => state.sign);
-  let navigate = useNavigate();
-
-  if(!globalStoreSign.responseProfile){navigate("/"); console.log("bizarre")}else{console.log("sinon")}
-
-
 
     return (
         <main className="main bg-dark  profile-page">
