@@ -1,21 +1,24 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import MainNav from "./components/MainNav";
 import Home from "./pages/Home";
 import Notfound from "./pages/Notfound";
-import EmployeesList from "./pages/EmployeesList";
-import CreateEmployee from "./pages/CreateEmployee";
-import VerticalNav from "./components/VerticalNav";
+import SignIn from "./pages/SignIn";
+import Profile from "./pages/Profile";
+import EditName from "./pages/EditName";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
     <BrowserRouter>
-      <VerticalNav />
+      <MainNav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/employeeslist" element={<EmployeesList />} />
-        <Route path="/createemployee" element={<CreateEmployee />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/editname" element={<EditName />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
       <Footer />
