@@ -1,8 +1,4 @@
-// @font-face {
-//   font-family: "font-1";
-//   src: url(../assets/fonts/Roboto/Roboto-Medium.ttf);
-// }
-
+// General settings //
 
 $font-1: "font-1";
 
@@ -27,23 +23,17 @@ $width-home : 100%;
   box-sizing: border-box;
 }
 
-// body {
-//   display: flex;
-//   flex-direction: row;
-//   width: $width-home;
-//   margin-left: auto;
-//   margin-right: auto;
-//   font-family: $font-1;
-// }
 
 li {
   list-style-type: none;
 }
 
 #root {
-  //display : flex;
+  display: flex;
+  flex-direction: row;
+
   width: $width-home;
-  height: 100%;
+  //height: 100%;
 }
 
 a{
@@ -61,7 +51,7 @@ html {
 body {
   margin: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   min-height: 100vh;
 }
 
@@ -91,6 +81,7 @@ body {
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
+
 
 
 

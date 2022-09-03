@@ -1,12 +1,10 @@
 @import "./settings";
-@import "./components/main-nav";
+@import "./components/tanstacktable";
+@import "./components/verticalnav";
 @import "./components/footer";
-@import "./pages/home";
-@import "./pages/profile";
-@import "./pages/signin";
-@import "./pages/signup";
 @import "./pages/notfound";
-
-
+@import "./pages/home";
+@import "./pages/createemployee";
+@import "./pages/employeeslist";
 
 
